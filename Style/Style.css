@@ -1,0 +1,139 @@
+:root{
+    --heading-color:#E5E7EB;
+    --main-bg-color:#121826 ;
+    --card-paragraph-color:#D2D5DA;
+    --first-paragraph-color:#9DA3AE;
+    --hand-icon-bg:#FCEED8;
+    --goal-icon-bg: #DEE9FC;
+    --msg-icon-bg:#FBE5E6;
+}
+*{
+    box-sizing: border-box; 
+    margin: 0%; 
+    padding: 0;
+}
+body{
+    font-family: "Hanken Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background-image: url("../simple-feature-section-master/resources/Background_image.svg");
+    background-color:var(--main-bg-color) ;
+    line-height: 1.6;
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+.container {
+    margin: auto;
+    width: 80%;
+    position: relative;
+    top: 55px;
+    padding: 20px;
+}
+h1,h3{
+    color: var(--heading-color);
+    font-weight: 700;
+    line-height: 1.2; 
+}
+p{
+    color: var(--first-paragraph-color);
+}
+h1{
+    font-size: 3rem;
+}
+.container .text{
+    text-align: center;
+    width: 45%;
+    margin: auto;
+}
+.container .card p{
+    color:#D2D5DA ;
+}
+.container .cards{
+
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    width: 100%;
+    height: fit-content;
+    margin: auto;
+    align-items: stretch;
+}
+.container .card icon{
+    font-size: 30px;
+    border-radius:50%;
+    margin: 0 0 20px 0 ;
+    padding: 5px;
+    display: block;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container .card-1 icon{
+    background-color: var(--hand-icon-bg);
+}
+.container .card-2 icon{
+    background-color: var(--goal-icon-bg);
+}
+.container .card-3 icon{
+    background-color: var(--msg-icon-bg);
+}
+.container .card{
+    padding: 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #212936;
+    border-radius: 20px;
+}
+.container .card h3{
+    line-height: 1.5;
+    margin-bottom: 12px;
+    min-height: 3em;
+}
+.container .card img{
+    border-radius: 10px;
+    width: 100%;
+    margin-top: auto;
+}
+.container .card p{
+    flex-grow: 1; 
+    margin-bottom: 20px;
+}
+@media (max-width:1300px) and (min-width:1000px) {
+    .container .cards {
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap; /* Allows cards to wrap to next line */
+    }
+    
+    .container .card {
+        flex: 0 0 calc(50% - 50px); /* Each card takes 50% width minus gap */
+    }
+    .container .card-3{
+        margin: auto;
+        flex: 0 0 55%; 
+    }
+    .container .text{
+        width: 60%;
+    }
+    
+}
+@media (max-width:999px) and (min-width:400px){
+    .container .cards{
+        margin-top: 30px;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+    .container .cards .card{
+        flex:0 0 100%;
+
+    }
+    .container .text{
+        width: 90%;
+    }
+}

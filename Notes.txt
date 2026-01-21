@@ -1,0 +1,82 @@
+1. Parent Container (.container .cards)
+
+display: flex; - Turns the cards container into a flexbox, allowing cards to sit side-by-side
+align-items: stretch; - Makes all cards stretch to match the height of the tallest card (ensures equal height)
+gap: 20px; - Creates consistent spacing between cards
+
+2. Individual Cards (.container .card)
+
+flex: 1; - Makes each card take equal width (distributes available space equally among all cards)
+display: flex; - Turns each card into a flex container for its internal content
+flex-direction: column; - Stacks content vertically inside each card (icon → heading → paragraph → image)
+
+3. Card Heading (.container .card h3)
+
+min-height: 3em; - Ensures all headings occupy the same vertical space, even if text length differs
+
+em vs rem:
+
+em = relative to the parent element's font size
+rem = relative to the root (html) element's font size
+Using em here means "3 times the current font size of the heading"
+
+
+
+
+
+4. Card Paragraph (.container .card p)
+
+flex-grow: 1; - Allows paragraph to expand and fill available space, pushing the image down
+margin-bottom: 20px; - Creates spacing between paragraph and image
+
+5. Card Image (.container .card img)
+
+margin-top: auto; - Pushes image to the bottom of the card (works with flexbox)
+This ensures images align horizontally across all cards
+
+6. Icon (.container .card icon)
+
+height: 40px; width: 40px; - Fixed size ensures all icons are identical dimensions
+display: flex; align-items: center; justify-content: center; - Centers the icon content perfectly within the circle
+
+Result: All cards have equal width and height, with icons, headings, and images aligned horizontally across cards, regardless of text content differences.
+
+
+MEDIA QUERIES 
+flex: [flex-grow] [flex-shrink] [flex-basis];
+```
+
+### Breaking Down Each Part:
+flex: 0 0 calc(50% -10px);
+**1. `flex-grow: 0`** (First number)
+- Controls whether the item can **grow** to fill extra space
+- `0` = "Don't grow beyond your set size"
+- `1` = "Grow to fill available space"
+
+**2. `flex-shrink: 0`** (Second number)
+- Controls whether the item can **shrink** if there's not enough space
+- `0` = "Don't shrink below your set size"
+- `1` = "Shrink if needed"
+
+**3. `flex-basis: calc(50% - 10px)`** (Third value)
+- Sets the **initial/ideal size** of the item
+- `calc(50% - 10px)` = "Take 50% of container width, minus 10px"
+
+### Why `calc(50% - 10px)`?
+
+Your `.container .cards` has `gap: 20px` which creates spacing between cards.
+
+- Container width = 100%
+- You want 2 cards side-by-side
+- Gap between them = 20px
+
+**The math:**
+```
+Card 1 width + Gap + Card 2 width = 100%
+50% + 20px + 50% = 100% + 20px (TOO WIDE!)
+```
+
+**The solution:**
+```
+Each card = calc(50% - 10px)
+Card 1: calc(50% - 10px) + Gap: 20px + Card 2: calc(50% - 10px) = 100%
